@@ -9,8 +9,8 @@ const data = require('../../data/data.json');
 
 var nextId = 4;
 
-const Boards = ({navigation}) => {
-
+const Boards = ({fun, navigation}) => {
+    
     const [boards, setBoards] = useState(data.boards);
     const [board, setBoard] = useState({});
     const [modify, setModify] = useState(-1);
@@ -56,7 +56,7 @@ const Boards = ({navigation}) => {
                                     item={item} 
                                     onDelete={() => deleteBoard(item.id)}
                                     onEdit={() => openModifyBoard(item.id, item)}
-                                    onOpen={() => navigation.push('Lists', {'listId':item.id})}
+                                    onOpen={() => navigation.push('Lists', {'boardId':item.id, 'title':item.name})}
                                 />
                             );
                         }}

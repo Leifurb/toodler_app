@@ -1,14 +1,19 @@
 import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { useEffect } from 'react';
 
 const Lists = ({ route, navigation }) => {
 
-    const {listId} = route.params;
+    const {boardId, title} = route.params;
 
-    console.log(listId);
+    console.log(boardId,title);
+    useEffect(() => {
+        navigation.setOptions({title: title})
+      });
+
 
     return (
         <Text>
-            {listId}
+            {boardId},{title}
         </Text>
     );
 }

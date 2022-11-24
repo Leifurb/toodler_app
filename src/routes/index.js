@@ -8,10 +8,21 @@ import Tasks from '../views/tasks';
 
 const Stack = createStackNavigator();
 
-const Routes = () => (
+const Routes = ({fun}) => (
     <NavigationContainer>
         <Stack.Navigator initialRouteName="Boards">
-            <Stack.Screen name="Boards" component={Boards}/>
+            <Stack.Screen name="Boards" component={Boards}
+                options={{
+                title: 'Toodler',
+                headerStyle: {
+                    backgroundColor: '#fafafafa',
+                },
+                headerTintColor: '#000',
+                headerTitleStyle: {
+                    fontWeight: 'bold',
+                    textAlign: 'center'
+                },
+        }}/>
             <Stack.Screen name="Lists" component={Lists} />
             <Stack.Screen name="Tasks" component={Tasks} />
         </Stack.Navigator>
