@@ -1,5 +1,5 @@
 import { FlatList, View, KeyboardAvoidingView, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import TaskItem from '../../components/tasks/item';
 import AddButton from '../../components/buttons/add'
@@ -13,12 +13,8 @@ var nextId = 17;
 
 const Tasks = ({route, navigation}) => {
 
-    const {listId} = route.params;
-    var tasksInList = data.tasks.filter(l => l.listId == listId);
-
-    tasksInList = tasksInList.sort(function(x, y) {
-        return (x === y)? 0 : x? 1 : -1;
-    });
+    const {listId, title} = route.params;
+    var tasksInList = data.tasks.filter(l => l.listId == listId).sort(function(x, y) {return Number(x.isFinished) - Number(y.isFinished);});
 
     const [tasks, setTasks] = useState(tasksInList);
     const [task, setTask] = useState({});
@@ -54,6 +50,10 @@ const Tasks = ({route, navigation}) => {
         }
         setModify(-1);
     }
+    useEffect(() => {
+        navigation.setOptions({title: title})
+      });
+
     return (
         <View style={{backgroundColor: 'white', height:'100%'}}>
             {modify === -1 ?

@@ -64,7 +64,7 @@ const Lists = ({route, navigation}) => {
                                 <ListItem 
                                     item={item} 
                                     onModify={() => openModifyList(item.id, item)}
-                                    onOpen={() => navigation.push('Tasks', {'listId':item.id})}
+                                    onOpen={() => navigation.push('Tasks', {'listId':item.id, 'title': item.name})}
                                 />
                             );
                         }}

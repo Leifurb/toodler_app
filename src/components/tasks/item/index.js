@@ -11,7 +11,9 @@ const TaskItem = ({item, onModify, onOpen}) => {
             <Text style={[styles.title, item.isFinished && {textDecorationLine: 'line-through'}]} numberOfLines={1}>
                 {item.name}
             </Text>
-            <View style={[styles.color, {backgroundColor: item.color}]} />
+            <Text style={[styles.description, item.isFinished && {textDecorationLine: 'line-through'}]}>
+                {item.description}
+            </Text>
         </TouchableOpacity>
     )
 };
