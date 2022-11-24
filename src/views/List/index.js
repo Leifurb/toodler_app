@@ -5,12 +5,13 @@ import BoardForm from '../../components/forms/board';
 import Header from '../../components/header';
 import KeyboardAvoidingComponent from '../../components/input';
 import Modal from '../../components/modal';
+import List from '../../components/list';
 
 import styles from './styles';
 
 const data = require('../../data/data.json');
 
-const Lists = () => {
+const Lists = ({navigation}) => {
 
     const input = {
         'title': 'Create new board',
@@ -23,7 +24,7 @@ const Lists = () => {
 
     return (
         <View style={styles.container}>
-            <Boards data={data}/>
+            <List data={data} navigation={navigation}/>
         </View>
     );
 }
