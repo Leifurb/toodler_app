@@ -16,12 +16,20 @@ export default StyleSheet.create({
     btnContainer: {
         marginTop: 12,
         flexDirection: 'row',
-        width: '50%',
+        justifyContent: 'space-between',
+        width: '100%',
         padding: 5,
         marginRight: 10
     },
     button: {
         paddingHorizontal: 10,
         marginRight: 10
+    },
+    btnRight: {
+      flex: 1,
+      flexDirection: 'row-reverse',
+    },
+    delete: {
+      color: 'red'
     }
 });

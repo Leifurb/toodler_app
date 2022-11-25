@@ -14,5 +14,13 @@ export default StyleSheet.create({
         fontSize: 16,
         fontWeight: '300',
         marginBottom: 3
+    },
+    checkBox: {
+        marginTop: 15,
+        marginBottom: 35
+    },
+    colorPick: {
+        maxHeight: 250,
+        flex: 1
     }
 });

@@ -1,32 +1,31 @@
-import { FlatList, View, KeyboardAvoidingView, TouchableWithoutFeedback, TextInput, Button } from 'react-native';
-import BoardItem from '../boarditem';
+import { FlatList, View, KeyboardAvoidingView, TouchableWithoutFeedback, TextInput, Button, SafeAreaView } from 'react-native';
 import React, { useState } from 'react';
-import AddButton from '../buttons/add';
 
-import BoardForm from '../forms/board';
+import BoardItem from '../../components/boards/item';
+import AddButton from '../../components/buttons/add'
+import BoardForm from '../../components/boards/form';
+import Header from '../../components/header';
 
-var nextId = 4;
+var nextId = 4; 
 
-const Boards = ({data}) => {
+const Boards = ({boards, setBoards, setBoardId}) => {
 
-    const [boards, setBoards] = useState(data.boards);
     const [board, setBoard] = useState({});
     const [modify, setModify] = useState(-1);
 
     const deleteBoard = (id) => {
         const filteredData = boards.filter(item => item.id !== id);
         setBoards(filteredData);
+        setModify(-1);
     }
     
     const openModifyBoard = (id, item) => {
         setBoard(item);
-        console.log(item);
         setModify(id);
     }
 
     const saveBoard = (item) => {
         if(item !== undefined) {
-            console.log(item);
             if('id' in item) {
                 const newBoards = boards.map(board => {
                     if(board['id'] == item['id']) {
@@ -44,19 +43,19 @@ const Boards = ({data}) => {
         setModify(-1);
     }
     return (
-        <>
+        <View style={{height: '100%'}}>
+            <Header/>
             {modify === -1 ?
                 (<>
                     <FlatList
                         data={boards}
-                        numColumns={2}
+                        numColumns={1}
                         renderItem={({ item }) => {
                             return (
                                 <BoardItem 
                                     item={item} 
-                                    onDelete={() => deleteBoard(item.id)}
-                                    onEdit={() => openModifyBoard(item.id, item)}
-                                    onOpen={() => console.log('Open Board with id ' + item.id.toString())}
+                                    onModify={() => openModifyBoard(item.id, item)}
+                                    onOpen={() => setBoardId(item.id)}
                                 />
                             );
                         }}
@@ -67,10 +66,10 @@ const Boards = ({data}) => {
                 )
             :
                 (
-                    <BoardForm data={board} save={saveBoard}/>
+                    <BoardForm data={board} save={saveBoard} del={deleteBoard}/>
                 )
             }
-        </>
+        </View>
     );
 };
 

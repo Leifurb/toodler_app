@@ -6,17 +6,23 @@ export default StyleSheet.create({
         aspectRatio: 1
     },
     title: {
-        fontSize: 15,
+        fontSize: 20,
         fontWeight: '500',
-        marginTop: 10,
-        marginBottom: 10
+        marginLeft: 10
     },
     container: {
         flex: 1,
         width: '100%',
-        margin: '1%',
-        alignItems: 'center',
-        backgroundColor: '#f0f0f0'
+        backgroundColor: '#fafafa',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        alignItems: 'center'
+
+    },
+    color: {
+        height: '100%',
+        aspectRatio: 1,
+        height: 60
     },
     buttonContainer: {
         position: 'absolute',

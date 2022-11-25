@@ -1,13 +1,13 @@
-import { Text, SafeAreaView } from 'react-native';
-
+import { Text, SafeAreaView, Button, View } from 'react-native';
+ 
 import styles from './styles';
-
-const Header = () => {
+ 
+const Header = ({title}) => {
     return (
-        <SafeAreaView style={styles.header}> 
-            <Text style={styles.logo}>Toodler</Text>
-        </SafeAreaView>
+        <View style={styles.header}>
+            {title == undefined ? (<Text style={styles.logo}>Toodler</Text>) : (<Text style={styles.title}>{title}</Text>)}
+        </View>
     );
 }
-
+ 
 export default Header;
