@@ -1,7 +1,5 @@
-import 'react-native-gesture-handler';
-import * as React from 'react';
-import Routes from './src/routes';
+import Toodler from './src/views/toodler';
 
-const App = () => <Routes/>;
+const App = () => <Toodler/>;
 
 export default App;

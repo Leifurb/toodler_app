@@ -2,17 +2,14 @@ import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     buttonContainer: {
-        backgroundColor: '#f08080',
-        flexDirection: 'column',
-        marginTop: '10%',
-        height: '80%',
-        aspectRatio:1,
-        borderRadius: 5,
-        alignItems: 'center',
-        justifyContent: 'center'
+        backgroundColor: '#F08080',
+        borderRadius: 15,
+        zIndex: 1000
     },
     button: {
         fontSize: 25,
-        fontWeight: '600'
+        fontWeight: '600',
+        paddingVertical: '25%',
+        paddingHorizontal: '15%',
     }
 });

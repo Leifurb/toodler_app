@@ -7,7 +7,7 @@ export default StyleSheet.create({
         bottom: 25
     },
     buttonContainer: {
-        backgroundColor: '#98fb98',
+        backgroundColor: '#98FB98',
         borderRadius: 15,
     },
     button: {

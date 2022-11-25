@@ -1,18 +1,18 @@
 import React from 'react';
 import { View, KeyboardAvoidingView, TextInput, StyleSheet, Text, Platform, TouchableWithoutFeedback, Button, Keyboard, TouchableOpacity  } from 'react-native';
 import getTextInput from '../../input';
-import getCheckboxInput from '../../input/checkbox';
-import getColorInput from '../../input/color';
+
 
 
 import styles from './styles';
 
-const create = (id, name, color, isFinished) => {
+
+const create = (id, name, img, des) => {
 
     var board = {
         'name': name,
-        'description': color,
-        'isFinished': isFinished
+        'thumbnailPhoto': img,
+        'description': des
     }
 
     if(id != -1) {
@@ -22,43 +22,36 @@ const create = (id, name, color, isFinished) => {
     return board;
 }
 
-const ListForm = ({data, save, del}) => {
+
+
+const BoardForm = ({data, save}) => {
 
     const id = data.id == null ? -1 : data.id;
     const [name, nameInput] = getTextInput(data.name == null ? '' : data.name, 'Name');
+    const [img, imgInput] = getTextInput(data.thumbnailPhoto == null ? '' : data.thumbnailPhoto, 'Image URL');
     const [des, desInput] = getTextInput(data.description == null ? '' : data.description, 'Description');
-    const [isFinished, taskInput] = getCheckboxInput(data.isFinished == null ? false : data.isFinished, 'Is Finished?');
 
-    
+
 
     return (
         <KeyboardAvoidingView style={styles.container}>
             <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
                 <View style={styles.inner}>
-                <Text style={styles.header}>{id == -1 ? 'Create new task' : 'Update task'}</Text>
+                <Text style={styles.header}>{id == -1 ? 'Create new board' : 'Update board'}</Text>
                 {nameInput}
+                {imgInput}
                 {desInput}
-                {taskInput}
                 <View style={styles.btnContainer}>
                     <TouchableOpacity onPress={() => save()}>
                         <Text style={styles.button}>
                             Back
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity onPress={() => save(create(id, name, des, isFinished))}>
+                    <TouchableOpacity onPress={() => save(create(id, name, img, des))}>
                         <Text style={styles.button}>
-                            { id == -1 ? 'Create' : 'Save'} 
+                            Save
                         </Text>
                     </TouchableOpacity>
-                    { id != -1 &&
-                        <View style={styles.btnRight}>
-                            <TouchableOpacity onPress={() => del(id)}>
-                                <Text style={[styles.button, styles.delete]}>
-                                    Delete
-                                </Text>
-                            </TouchableOpacity>
-                        </View>
-                    }
                 </View>
                 </View>
             </TouchableWithoutFeedback>
@@ -66,4 +59,4 @@ const ListForm = ({data, save, del}) => {
     );
 };
 
-export default ListForm;
+export default BoardForm;
